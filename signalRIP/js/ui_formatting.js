@@ -81,8 +81,11 @@ function add_message(text_to_add, text_box){
 $(function(){
 
     text_box = document.getElementsByClassName("ql-editor ql-blank ql-editor--loaded")[0]
+    icon = document.getElementsByClassName('module-sticker-button__button')[0]
     text_box.addEventListener('focusin', (event) => {
         text_box.setAttribute("data-placeholder", "")
+        // text_box.setAttribute("style", "float: left")
+        icon.setAttribute("style", "display:none")
     });
 
 
@@ -104,6 +107,7 @@ $(function(){
     text_box.addEventListener('focusout', (event) => {
         if(text_box.innerHTML == "" || text_box.innerHTML == "<br>"){
             text_box.setAttribute("data-placeholder", "Send a message")
+            icon.setAttribute("style", "display:")
         }
     });
 

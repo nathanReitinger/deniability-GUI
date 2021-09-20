@@ -171,7 +171,7 @@
     <script type="text/javascript" src="js/ui_formatting.js"></script>
 
 
-    <script type="text/javascript" src="js/components.js"></script>
+<!--     <script type="text/javascript" src="js/components.js"></script>
     <script type="text/javascript" src="ts/set_os_class.js"></script>
     <script type="text/javascript" src="ts/manage_full_screen_class.js"></script>
     <script type="text/javascript" src="ts/backboneJquery.js"></script>
@@ -192,7 +192,7 @@
     <script type="text/javascript" src="js/views/standalone_registration_view.js"></script>
     <script type="text/javascript" src="js/wall_clock_listener.js"></script>
     <script type="text/javascript" src="js/rotate_signed_prekey_listener.js"></script>
-    <script type="text/javascript" src="js/keychange_listener.js"></script>
+    <script type="text/javascript" src="js/keychange_listener.js"></script> -->
     <style id="detectElementResize" type="text/css">
     @keyframes resizeanim {
         from {
@@ -238,12 +238,14 @@
 <body>
 
     <div style="width: 446px; height: 850px; margin:0 auto;">
-   
+
+        signalStrength   cellProvider   wifiStrength     time     batter
 
         <div class="conversation-stack">
             <div class="conversation placeholder">
             <div class="conversation-header"></div>
             <div class="container">
+
                 <div class="content">
                 <div class="module-splash-screen__logo module-img--128 module-logo-blue"></div>
                 <h3>Welcome to Signal</h3>
@@ -275,10 +277,10 @@
                     </button>
                             <button aria-label="Start a video call" class="module-ConversationHeader__button module-ConversationHeader__button--video module-ConversationHeader__button--show" type="button"></button>
                             <button type="button" class="module-ConversationHeader__button module-ConversationHeader__button--audio module-ConversationHeader__button--show" aria-label="Start a call"></button>
-                            <button type="button" class="module-ConversationHeader__button module-ConversationHeader__button--search module-ConversationHeader__button--show" aria-label="Search"></button>
-                            <div class="react-contextmenu-wrapper">
-                                <button type="button" class="module-ConversationHeader__button module-ConversationHeader__button--more module-ConversationHeader__button--show" aria-label="More Info"></button>
-                            </div>
+                            <!-- <button type="button" class="module-ConversationHeader__button module-ConversationHeader__button--search module-ConversationHeader__button--show" aria-label="Search"></button> -->
+                            <!-- <div class="react-contextmenu-wrapper"> -->
+                                <!-- <button type="button" class="module-ConversationHeader__button module-ConversationHeader__button--more module-ConversationHeader__button--show" aria-label="More Info"></button> -->
+                            <!-- </div> -->
                             <nav role="menu" tabindex="-1" class="react-contextmenu" style="position: fixed; opacity: 0; pointer-events: none;"><nav class="react-contextmenu-item react-contextmenu-submenu" role="menuitem" tabindex="-1" aria-haspopup="true" style="position: relative;"><div class="react-contextmenu-item">Disappearing messages</div><nav class="react-contextmenu" role="menu" tabindex="-1" style="position: absolute; transition: opacity 1ms ease 0s; top: 0px; left: 100%;"><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">Off</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">4 weeks</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">1 week</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">1 day</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item module-ConversationHeader__disappearing-timer__item--active">8 hours</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">1 hour</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">5 minutes</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">30 seconds</div></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false"><div class="module-ConversationHeader__disappearing-timer__item">Custom time...</div></div></nav></nav><nav class="react-contextmenu-item react-contextmenu-submenu" role="menuitem" tabindex="-1" aria-haspopup="true" style="position: relative;"><div class="react-contextmenu-item">Mute notifications</div><nav class="react-contextmenu" role="menu" tabindex="-1" style="position: absolute; transition: opacity 1ms ease 0s; top: 0px; left: 100%;"><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mute for one hour</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mute for eight hours</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mute for one day</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mute for one week</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mute always</div></nav></nav><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Chat color</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">View recent media</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">View safety number</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Reset session</div><div class="react-contextmenu-item react-contextmenu-item--divider" role="menuitem" tabindex="-1" aria-disabled="false" aria-orientation="horizontal"></div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Mark as unread</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Archive</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Delete</div><div class="react-contextmenu-item" role="menuitem" tabindex="-1" aria-disabled="false">Pin Conversation</div></nav></div></div></div>      <div class="main panel">        <div class="timeline-placeholder" aria-live="polite"><div class="timeline-wrapper"><div class="module-timeline" role="presentation" tabindex="-1" style="position: relative;"><div style="overflow: visible; height: 0px; width: 0px;">
                                 
                                 
@@ -330,34 +332,58 @@
                                 </div>
                                 <div class="CompositionArea__row CompositionArea__row--column"></div>
                                 <div class="CompositionArea__row">
-                                    <div class="CompositionArea__button-cell">
-                                    <button type="button" class="module-emoji-button__button" aria-label="Emoji"></button>
+                                    <!-- <div class="CompositionArea__button-cell"> -->
+                                    <!-- <button type="button" class="module-emoji-button__button" aria-label="Emoji"></button> -->
+                                    <!-- </div> -->
+
+                                    <div class="choose-file">
+                                        <button type="button" class="paperclip thumbnail" aria-label="Attach file"></button>
                                     </div>
+
+
                                     <div class="CompositionArea__input">
                                     <div class="module-composition-input__input">
                                         <div class="module-composition-input__input__scroller">
                                         <div class="quill module-composition-input__quill">
                                             <div class="ql-container ql-snow">
-                                            <div class="ql-editor ql-blank ql-editor--loaded" data-gramm="false" contenteditable="true" data-placeholder="Send a message"></div>
+                                            <div class="ql-editor ql-blank ql-editor--loaded" data-gramm="false" contenteditable="true" data-placeholder="Send a message"></div> <button type="button" class="module-sticker-button__button" aria-label="Open the sticker picker"></button>
                                             <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
                                             </div>
                                         </div>
+
+                                    <!-- <div class="CompositionArea__button-cell"> -->
+                                    <!-- <button type="button" class="module-sticker-button__button" aria-label="Open the sticker picker"></button> -->
+                                    <!-- </div> -->
+
+                                    <!-- <button type="button" class="module-sticker-button__button" aria-label="Open the sticker picker"></button> -->
+
                                         </div>
                                     </div>
                                     </div>
+
+
+                                    <!-- <div class="CompositionArea__button-cell"> -->
+                                    <!-- <button type="button" class="module-sticker-button__button" aria-label="Open the sticker picker"></button> -->
+                                    <!-- </div> -->
+
                                     <div class="CompositionArea__button-cell">
-                                    <button type="button" class="module-sticker-button__button" aria-label="Open the sticker picker"></button>
+                                    <button type="button" class="module-camera-button__button" aria-label="Open the sticker picker"></button>
                                     </div>
+
+
+
                                     <div class="CompositionArea__button-cell">
                                     <div class="capture-audio">
                                         <button class="microphone"></button>
                                     </div>
                                     </div>
-                                    <div class="CompositionArea__button-cell">
-                                    <div class="choose-file">
-                                        <button type="button" class="paperclip thumbnail" aria-label="Attach file"></button>
-                                    </div>
-                                    </div>
+                                    
+
+                                    <!-- <div class="CompositionArea__button-cell"> -->
+                                    <!-- <div class="choose-file"> -->
+                                        <!-- <button type="button" class="paperclip thumbnail" aria-label="Attach file"></button> -->
+                                    <!-- </div> -->
+                                    <!-- </div> -->
                                 </div>
                                 </div>
                             </div>

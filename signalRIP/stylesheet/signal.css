@@ -7083,8 +7083,10 @@ button.module-conversation-details__action-button {
 .module-sticker-button__button {
   border: 0;
   background: none;
+  margin-top: -1.6em;
+  float: right;
   width: 32px;
-  height: 32px;
+  /*height: 32px;*/
   border-radius: 16px;
   display: flex;
   justify-content: center;
@@ -7110,6 +7112,35 @@ button.module-conversation-details__action-button {
     background: #e9e9e9;
     opacity: 1; }
     .dark-theme .module-sticker-button__button--active {
+      background: #3b3b3b; }
+
+
+.module-camera-button__button {
+  border: 0;
+  background: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  outline: none; }
+  .module-camera-button__button:focus, .module-camera-button__button:hover {
+    opacity: 1; }
+  .module-camera-button__button::after {
+    display: block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    -webkit-mask: url("../images/icons/v2/camera-outline-24.svg") no-repeat center;
+    -webkit-mask-size: 100%;
+    background-color: #3b3b3b; }
+  .module-camera-button__button--active {
+    background: #e9e9e9;
+    opacity: 1; }
+    .dark-theme .module-camera-button__button--active {
       background: #3b3b3b; }
 
 .module-sticker-button__tooltip {
