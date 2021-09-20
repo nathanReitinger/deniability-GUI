@@ -1,14 +1,14 @@
 
 
-
 function add_message(text_to_add, text_box){
     outer_container = document.getElementById("where_all_the_messages_go")
 
-    message_inners = '<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--outgoing"></div><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM">39m</span><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></div></div></div></div>'
-
+    message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--outgoing"></div><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>39m</span></span><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></div></div></div></div>`
+    message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable>Yes I'm&nbsp;here</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Mon, Sep 20, 2021 10:49 AM"><span contenteditable>1m</span></span><div class="module-expire-timer module-expire-timer--60 module-expire-timer--incoming"></div></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--incoming"></div><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
 
     all_messages = document.getElementsByClassName("module-timeline__message-container")
     console.log(all_messages)
+
 
     lowest_message_loc = 0
     last_message_data_row = 0
@@ -25,6 +25,7 @@ function add_message(text_to_add, text_box){
 
     console.log(lowest_message_loc)
 
+    // new message creation
     let message_div = document.createElement('div');
     message_div.setAttribute("id", "randomo_stiring")
     new_data_row = "" + ( parseInt(last_message_data_row, 10) + 1 )
@@ -33,8 +34,14 @@ function add_message(text_to_add, text_box){
     message_div.setAttribute("role", "row" )
     message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
 
+    if ($("#popupSelect").val() == 'Incoming') {
+        message_div.innerHTML = message_inners_incoming
+    } else {
+        message_div.innerHTML = message_inners_outgoing
+    }
 
-    message_div.innerHTML = message_inners
+    // message_div.innerHTML = message_inners_incoming
+
 
     text_displayed = message_div.getElementsByTagName("span")[0]
     console.log(text_displayed)
@@ -66,6 +73,9 @@ function add_message(text_to_add, text_box){
     text_box.innerHTML = ""
     console.log(text_box.innerHTML)
 
+    document.getElementsByClassName("timeline-placeholder")[0].setAttribute("style", "bottom: -3em;")
+    message_div.scrollIntoView();
+
 }
 
 $(function(){
@@ -80,6 +90,7 @@ $(function(){
 
         if (event.which == 13 || event.keyCode == 13){
             add_message(text_box.innerText, text_box)
+            gotoBottom(document.getElementById("where_all_the_messages_go"))
         }
     });
 
