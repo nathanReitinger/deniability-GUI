@@ -30,6 +30,10 @@
   font-family: 'Inter';
   src: url("../fonts/inter-v3.10/Inter-Regular.woff2"); }
 
+@font-face {
+    font-family: sfpro;
+    src: url("../../font/sf-pro.otf"); }
+
 @keyframes search-results-loading-pulsating-background-animation {
   0% {
     opacity: 1; }
@@ -1006,7 +1010,7 @@ img.emoji.jumbo {
       width: 100%;
       margin: 0;
       padding: 0;
-      overflow-y: auto;
+      overflow-y: auto; /*the one to edit to get rid of scoll bar*/
       overflow-x: hidden; }
 
 .panel + .main.panel {
@@ -14942,12 +14946,45 @@ button.module-conversation-details__action-button {
 /*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*//*/
 
 
+#signal {
+  display:inline-block;
+  position: relative;
+  top: 1.2em;
+  left: .4em;
+}
+#provider {
+  display:inline-block;
+  font-family: sfpro;
+  font-size: 14px;
+  position: relative;
+  top: 1.2em;
+  left: .4em;
+}
+#wifi {
+  display:inline-block;
+  position: relative;
+  top: 1.2em;
+  left: .4em;
+}
 
-
-
-
-
-
+#time {
+  display:inline-block;
+  position: relative;
+  top: 1.2em;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  left: 1em;
+  font-family: sfpro;
+  font-size: 14px;
+}
+#battery {
+  display:inline-block;
+  position: relative;
+  top: 1.2em;
+  left: 4em;
+  text-align: right;
+}
 
 
 

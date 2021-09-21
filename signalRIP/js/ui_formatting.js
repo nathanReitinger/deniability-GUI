@@ -1,5 +1,6 @@
 
 
+
 function add_message(text_to_add, text_box){
     outer_container = document.getElementById("where_all_the_messages_go")
 
