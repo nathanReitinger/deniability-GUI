@@ -156,8 +156,9 @@ a {
     width: 32px;
     height: 32px;
     padding: 0;
-    opacity: 0.5;
+    /*opacity: 0.5;*/
     border: none;
+    margin-top: .5em;
     background: transparent;
     outline: none; }
     .file-input .paperclip:focus, .file-input .paperclip:hover {
@@ -647,7 +648,7 @@ a {
     height: 32px;
     width: 32px;
     text-align: center;
-    opacity: 0.5;
+    /*opacity: 0.5;*/
     background: transparent;
     padding: 0;
     border: none;
@@ -7095,7 +7096,7 @@ button.module-conversation-details__action-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
+  /*opacity: 0.5;*/
   outline: none; }
   .module-sticker-button__button:focus, .module-sticker-button__button:hover {
     opacity: 1; }
@@ -7128,7 +7129,7 @@ button.module-conversation-details__action-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.5;
+  /*opacity: 0.5;*/
   outline: none; }
   .module-camera-button__button:focus, .module-camera-button__button:hover {
     opacity: 1; }
@@ -14974,9 +14975,10 @@ button.module-conversation-details__action-button {
   text-align: center;
   margin: auto;
   width: 50%;
-  left: 1em;
+  left: 1.5em;
   font-family: sfpro;
   font-size: 14px;
+  font-weight: bold;
 }
 #battery {
   display:inline-block;

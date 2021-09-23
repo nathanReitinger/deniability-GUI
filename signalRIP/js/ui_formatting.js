@@ -88,6 +88,7 @@ function add_message(text_to_add, text_box){
     // new message creation
     let message_div = document.createElement('div');
     message_div.setAttribute("id", "randomo_stiring")
+    message_div.setAttribute("contenteditable", true)
     message_div.setAttribute("class", "module-timeline__message-container" )
     message_div.setAttribute("role", "row" )
     message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
@@ -149,7 +150,6 @@ $(function(){
 
         if (event.which == 13 || event.keyCode == 13){
             add_message(text_box.innerText, text_box)
-            //gotoBottom(document.getElementById("where_all_the_messages_go"))
         }
     });
 
