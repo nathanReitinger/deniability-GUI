@@ -65,7 +65,7 @@ function find_prev_message(message_div){
 
     prev_message = 0
     for(message of all_messages){
-        if( message.contains(message_div)){
+        if( message_div && message.id === message_div.id ){
             return(prev_message)
         }
         prev_message = message
@@ -85,10 +85,17 @@ function add_message(text_to_add, text_box){
 
     all_messages = document.getElementsByClassName("module-timeline__message-container")
 
+    rand_vals = new Uint32Array(4)
+    window.crypto.getRandomValues(rand_vals)
+    new_id=""
+    for(val of rand_vals){
+        new_id += val.toString(16)
+    }
+
     // new message creation
     let message_div = document.createElement('div');
-    message_div.setAttribute("id", "randomo_stiring")
-    message_div.setAttribute("contenteditable", true)
+    message_div.setAttribute("id", new_id)
+    //message_div.setAttribute("contenteditable", true)
     message_div.setAttribute("class", "module-timeline__message-container" )
     message_div.setAttribute("role", "row" )
     message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
@@ -135,6 +142,14 @@ function resize_listener(event){
     resize_message_container()
 }
 
+var observer = ""
+
+
+function spanDeleteListener(){
+
+
+}
+
 $(function(){
 
     text_box = document.getElementsByClassName("ql-editor ql-blank ql-editor--loaded")[0]
@@ -169,6 +184,12 @@ $(function(){
 
     // these are the message resizers. 
     $("span").on("keyup", resize_listener);
+
+    observer =  MutationObserver()
+    
+
+
+
 
 
 });
