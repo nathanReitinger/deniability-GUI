@@ -52,6 +52,8 @@ function adjust_position_all_messages(){
         } catch(e){}
     }
 
+    resize_message_container()
+
 }
 
 
@@ -150,6 +152,11 @@ function add_message(text_to_add, text_box){
         span.addEventListener("keyup", resize_listener)
     }
 
+    if ($("#popupSelect").val() == 'Incoming') {
+        message_div.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--incoming")[0].addEventListener('click', deleteButtonListener)
+    } else {
+        message_div.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--outgoing")[0].addEventListener('click', deleteButtonListener)
+    }
 
     resize_message(message_div)
     resize_message_container()
