@@ -91,6 +91,18 @@ function delete_message(message_id){
 }
 
 
+function gererate_id(){
+    rand_vals = new Uint32Array(4)
+    window.crypto.getRandomValues(rand_vals)
+    new_id=""
+    for(val of rand_vals){
+        new_id += val.toString(16)
+    }
+
+    return new_id
+
+}
+
 
 
 function add_message(text_to_add, text_box){
@@ -101,15 +113,10 @@ function add_message(text_to_add, text_box){
 
     all_messages = document.getElementsByClassName("module-timeline__message-container")
 
-    rand_vals = new Uint32Array(4)
-    window.crypto.getRandomValues(rand_vals)
-    new_id=""
-    for(val of rand_vals){
-        new_id += val.toString(16)
-    }
 
     // new message creation
     let message_div = document.createElement('div');
+    new_id = genereate_id()
     message_div.setAttribute("id", new_id)
     //message_div.setAttribute("contenteditable", true)
     message_div.setAttribute("class", "module-timeline__message-container" )
