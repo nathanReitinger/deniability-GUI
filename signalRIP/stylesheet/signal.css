@@ -1366,7 +1366,7 @@ img.emoji.jumbo {
 .module-message__container {
   position: relative;
   display: inline-block;
-  border-radius: 16px;
+  border-radius: 16px 16px 16px 16px;
   padding-right: 12px;
   padding-left: 12px;
   padding-top: 10px;
