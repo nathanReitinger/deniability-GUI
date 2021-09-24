@@ -1306,15 +1306,15 @@ img.emoji.jumbo {
   width: 24px;
   display: inline-block;
   cursor: pointer;
-  -webkit-mask: url("../images/icons/v2/more-horiz-24.svg") no-repeat center;
+  -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
   -webkit-mask-size: 100%;
   background-color: #848484; }
   .module-message__buttons__menu:hover {
-    -webkit-mask: url("../images/icons/v2/more-horiz-24.svg") no-repeat center;
+    -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
     -webkit-mask-size: 100%;
     background-color: #1b1b1b; }
   .dark-theme .module-message__buttons__menu:hover {
-    -webkit-mask: url("../images/icons/v2/more-horiz-24.svg") no-repeat center;
+    -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
     -webkit-mask-size: 100%;
     background-color: #f6f6f6; }
 
@@ -1366,7 +1366,7 @@ img.emoji.jumbo {
 .module-message__container {
   position: relative;
   display: inline-block;
-  border-radius: 16px;
+  border-radius: 16px 16px 16px 16px;
   padding-right: 12px;
   padding-left: 12px;
   padding-top: 10px;

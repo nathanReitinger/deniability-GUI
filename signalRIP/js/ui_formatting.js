@@ -44,6 +44,16 @@ function adjust_position(message_div){
 
 }
 
+function adjust_position_all_messages(){
+    all_messages = document.getElementsByClassName("module-timeline__message-container")
+    for(message of all_messages){
+        try{
+            adjust_position(message)
+        } catch(e){}
+    }
+
+}
+
 
 
 function resize_message_container(){
@@ -74,6 +84,10 @@ function find_prev_message(message_div){
     return prev_message
 }
 
+function delete_message(message_id){
+    document.getElementById(message_id).remove()
+}
+
 
 
 
@@ -100,10 +114,30 @@ function add_message(text_to_add, text_box){
     message_div.setAttribute("role", "row" )
     message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
 
+    // if prev message is same sender, then edit border property
+    let message_identifier_incoming = "module-message__container module-message__container--incoming"
+    let message_identifier_outgoing = "module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"
+    let prev_message = find_prev_message(message_div)
+
+    // if incoming message, use HTML properties from incoming
     if ($("#popupSelect").val() == 'Incoming') {
         message_div.innerHTML = message_inners_incoming
+        if (prev_message.innerHTML.includes(message_identifier_incoming)) {
+            var editable_div_previous = prev_message.getElementsByClassName(message_identifier_incoming)[0]
+            var editable_div_current = message_div.getElementsByClassName(message_identifier_incoming)[0]
+            editable_div_previous.style.cssText += 'border-bottom-left-radius: 5px';
+            editable_div_current.setAttribute("style", "border-top-left-radius: 5px")
+        }
+    // if outgoing message, use HTML properties from outgoing
     } else {
         message_div.innerHTML = message_inners_outgoing
+        if (prev_message.innerHTML.includes(message_identifier_outgoing)) {
+            console.log(prev_message.getElementsByClassName(message_identifier_outgoing)[0])
+            var editable_div_previous = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
+            var editable_div_current = message_div.getElementsByClassName(message_identifier_outgoing)[0]
+            editable_div_previous.style.cssText += 'border-bottom-right-radius: 5px';
+            editable_div_current.setAttribute("style", "border-top-right-radius: 5px")
+        }
     }
 
     text_displayed = message_div.getElementsByTagName("span")[0]
@@ -145,9 +179,11 @@ function resize_listener(event){
 var observer = ""
 
 
-function spanDeleteListener(){
-
-
+function deleteButtonListener(event){
+    message_to_del = event.currentTarget.parentElement.parentElement.parentElement.parentElement
+    console.log(message_to_del.id)
+    delete_message(message_to_del.id)
+    adjust_position_all_messages()
 }
 
 $(function(){
@@ -185,8 +221,15 @@ $(function(){
     // these are the message resizers. 
     $("span").on("keyup", resize_listener);
 
-    observer =  MutationObserver()
-    
+    delete_btns = document.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--outgoing")
+    for(delete_b of delete_btns){
+        delete_b.addEventListener('click', deleteButtonListener);
+    }
+    delete_btns = document.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--incoming")
+    for(delete_b of delete_btns){
+        delete_b.addEventListener('click', deleteButtonListener);
+    }
+
 
 
 
