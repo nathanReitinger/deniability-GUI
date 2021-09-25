@@ -86,12 +86,32 @@ function find_prev_message(message_div){
     return prev_message
 }
 
+// gets message after to the one given. If given sometihng we don't have yet, return 0
+function find_next_message(message_div){
+    all_messages = document.getElementsByClassName("module-timeline__message-container")
+
+    let prev_message;
+    let this_one_flag = false;
+    for(message of all_messages){
+        if( message_div && message.id === message_div.id || this_one_flag){
+            if (this_one_flag) {
+                return message
+            }
+            this_one_flag = true;
+
+        }
+        prev_message = message
+    }
+
+    return 0
+}
+
 function delete_message(message_id){
     document.getElementById(message_id).remove()
 }
 
 
-function gererate_id(){
+function generate_id(){
     rand_vals = new Uint32Array(4)
     window.crypto.getRandomValues(rand_vals)
     new_id=""
@@ -116,7 +136,7 @@ function add_message(text_to_add, text_box){
 
     // new message creation
     let message_div = document.createElement('div');
-    new_id = genereate_id()
+    new_id = generate_id()
     message_div.setAttribute("id", new_id)
     //message_div.setAttribute("contenteditable", true)
     message_div.setAttribute("class", "module-timeline__message-container" )
@@ -196,6 +216,114 @@ var observer = ""
 function deleteButtonListener(event){
     message_to_del = event.currentTarget.parentElement.parentElement.parentElement.parentElement
     console.log(message_to_del.id)
+
+
+    //// if no subsequent message, unround bottom right/left corner
+    //// if no previous message, unround top right/left corner
+    // if prev message is same sender, then edit border property
+    let message_identifier_incoming = "module-message__container module-message__container--incoming"
+    let message_identifier_outgoing = "module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"
+    let prev_message = find_prev_message(message_to_del)
+    let subsequent_message = find_next_message(message_to_del)
+
+    let prev_match_incoming = prev_message.innerHTML.includes(message_identifier_incoming)
+    let curr_match_incoming = message_to_del.innerHTML.includes(message_identifier_incoming)
+    let prev_match_outgoing = prev_message.innerHTML.includes(message_identifier_outgoing)
+    let curr_match_outgoing = message_to_del.innerHTML.includes(message_identifier_outgoing)
+
+        
+    // console.log("prev is incoming " + prev_message.innerHTML.includes(message_identifier_incoming))
+    // console.log("current is incoming " + message_to_del.innerHTML.includes(message_identifier_incoming))
+    // console.log("subsequent is " + subsequent_message)
+    // if (subsequent_message != 0) {
+    //     console.log("subsequent is incoming " + subsequent_message.innerHTML.includes(message_identifier_incoming))
+    // }
+
+    // prev T, current T, sub F -- unround previous
+    // prev T, current T, sub 0 -- unround previous 
+    // prev F, current T, sub T -- unround sub 
+
+    if (message_to_del.innerHTML.includes(message_identifier_incoming)) {
+
+        if (subsequent_message == 0 && !prev_match_incoming) {
+            console.log("passing, this is solo delete")
+        }
+        else if (!prev_match_incoming && !subsequent_message.innerHTML.includes(message_identifier_incoming)) {
+            console.log("passing, this is solo delete")
+            // check if other user is now chain
+            if (prev_match_outgoing && subsequent_message.innerHTML.includes(message_identifier_outgoing)) {
+                console.log("--to edit here")
+                var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
+                var editable_div_sub = subsequent_message.getElementsByClassName(message_identifier_outgoing)[0]
+                editable_div_prev.style.cssText += 'border-bottom-right-radius: 5px';
+                editable_div_sub.style.cssText += 'border-top-right-radius: 5px';
+            }
+        } else {
+
+            if (prev_match_incoming && curr_match_incoming) {
+                if (subsequent_message == 0) {
+                    // unround prev
+                    console.log("unreound prev")
+                    var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
+                    editable_div_prev.style.cssText += 'border-bottom-left-radius: 16px';
+                } else {
+                    if (subsequent_message.innerHTML.includes(message_identifier_incoming) == false) {
+                        //unround prev
+                        console.log("unreound prev")
+                        var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
+                        editable_div_prev.style.cssText += 'border-bottom-left-radius: 16px';
+                    }
+                }
+            }
+            if (!prev_match_incoming && curr_match_incoming) {
+                if (subsequent_message != 0) {
+                    // unround sub
+                    console.log("unreound sub")
+                    var editable_div_prev = subsequent_message.getElementsByClassName(message_identifier_incoming)[0]
+                    editable_div_prev.style.cssText += 'border-top-left-radius: 16px';
+                }
+            }
+        }
+    } else {
+
+        if (subsequent_message == 0 && !prev_match_outgoing) {
+            console.log("passing, this is solo delete")
+        }
+        else if (!prev_match_outgoing && !subsequent_message.innerHTML.includes(message_identifier_outgoing)) {
+            console.log("passing, this is solo delete")
+            if (prev_match_incoming && subsequent_message.innerHTML.includes(message_identifier_incoming)) {
+                console.log("--to edit here")
+                var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
+                var editable_div_sub = subsequent_message.getElementsByClassName(message_identifier_incoming)[0]
+                editable_div_prev.style.cssText += 'border-bottom-left-radius: 5px';
+                editable_div_sub.style.cssText += 'border-top-left-radius: 5px';
+            }
+        } else {
+            if (prev_match_outgoing && curr_match_outgoing) {
+                if (subsequent_message == 0) {
+                    // unround prev
+                    console.log("unreound prev")
+                    var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
+                    editable_div_prev.style.cssText += 'border-bottom-right-radius: 16px';
+                } else {
+                    if (subsequent_message.innerHTML.includes(message_identifier_outgoing) == false) {
+                        //unround prev
+                        console.log("unreound prev")
+                        var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
+                        editable_div_prev.style.cssText += 'border-bottom-right-radius: 16px';
+                    }
+                }
+            }
+            if (!prev_match_outgoing && curr_match_outgoing) {
+                if (subsequent_message != 0) {
+                    console.log('unround sub')
+                    var editable_div_prev = subsequent_message.getElementsByClassName(message_identifier_outgoing)[0]
+                    editable_div_prev.style.cssText += 'border-top-right-radius: 16px';
+                }
+            }
+        }
+    }
+
     delete_message(message_to_del.id)
     adjust_position_all_messages()
 }
