@@ -1,0 +1,17 @@
+style="border-radius: 16px 16px 5px 16px"
+
+
+module-message__container module-message__container
+
+
+57 difference between meta
+64 difference between messages 
+
+
+<> incoming
+
+<div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--incoming"></div>
+
+<> outgoing
+
+<div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--outgoing"></div>

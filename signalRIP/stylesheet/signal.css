@@ -1306,17 +1306,19 @@ img.emoji.jumbo {
   width: 24px;
   display: inline-block;
   cursor: pointer;
+  position: relative;
+  top: .12em;
   -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
   -webkit-mask-size: 100%;
   background-color: #848484; }
-  .module-message__buttons__menu:hover {
+/*  .module-message__buttons__menu:hover {
     -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
     -webkit-mask-size: 100%;
-    background-color: #1b1b1b; }
-  .dark-theme .module-message__buttons__menu:hover {
+    background-color: #1b1b1b; }*/
+/*  .dark-theme .module-message__buttons__menu:hover {
     -webkit-mask: url("../images/full-screen-flow/delete.svg") no-repeat center;
     -webkit-mask-size: 100%;
-    background-color: #f6f6f6; }
+    background-color: #f6f6f6; }*/
 
 .module-message__buttons__menu--incoming {
   margin-left: 12px; }
@@ -12029,10 +12031,10 @@ button.module-conversation-details__action-button {
       min-width: 0; }
       .module-ConversationHeader__header__info__title {
         font-family: Inter, "Helvetica Neue", "Source Sans Pro", "Source Han Sans SC", "Source Han Sans CN", "Hiragino Sans GB", "Hiragino Kaku Gothic", "Microsoft Yahei UI", Helvetica, Arial, sans-serif;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 20px;
         letter-spacing: -0.08px;
-        font-weight: 600;
+        font-weight: 450;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -12042,7 +12044,7 @@ button.module-conversation-details__action-button {
       .module-ConversationHeader__header__info__subtitle {
         display: flex;
         font-family: Inter, "Helvetica Neue", "Source Sans Pro", "Source Han Sans SC", "Source Han Sans CN", "Hiragino Sans GB", "Hiragino Kaku Gothic", "Microsoft Yahei UI", Helvetica, Arial, sans-serif;
-        font-size: 13px;
+        /*font-size: 13px;*/
         line-height: 18px;
         letter-spacing: -0.03px;
         color: #5e5e5e; }
@@ -14975,7 +14977,7 @@ button.module-conversation-details__action-button {
   text-align: center;
   margin: auto;
   width: 50%;
-  left: 1.5em;
+  left: .7em;
   font-family: sfpro;
   font-size: 14px;
   font-weight: bold;
