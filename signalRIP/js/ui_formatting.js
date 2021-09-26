@@ -36,7 +36,6 @@ function resize_message(message_div){
 
 
 
-
 function adjust_position(message_div){
     lowest_message = find_prev_message(message_div)
     lowest_message_loc = parseInt(lowest_message.style.top, 10)
@@ -64,7 +63,7 @@ function resize_message_container(){
     message_div = find_prev_message(null)
 
     new_height = ( parseInt(message_div.style.top, 10) + parseInt(message_div.style.height, 10) ) 
-    new_height_offset =   40 // parseInt(outer_container.style.height, 10) - lowest_message_loc - parseInt(lowest_message.style.height)
+    new_height_offset =   10 // parseInt(outer_container.style.height, 10) - lowest_message_loc - parseInt(lowest_message.style.height)
 
     outer_container.style.height = (new_height + new_height_offset)  + "px"
     outer_container.style.setProperty("max-height", outer_container.style.height)
@@ -188,8 +187,6 @@ function add_message(text_to_add, text_box){
     resize_message(message_div)
     resize_message_container()
 
-
-    document.getElementsByClassName("timeline-placeholder")[0].setAttribute("style", "bottom: -3em;")
     message_div.scrollIntoView();
 
 }
