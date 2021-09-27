@@ -1226,6 +1226,11 @@ img.emoji.jumbo {
   padding-right: 8px;
   flex-direction: row-reverse; }
 
+.module-message__buttons--outgoing--notification {
+  left: 97%;
+  line-height: 1;
+  flex-direction: row-reverse; }
+
 .module-message__buttons__download {
   height: 24px;
   width: 24px;
@@ -1302,8 +1307,8 @@ img.emoji.jumbo {
   margin-right: 12px; }
 
 .module-message__buttons__menu {
-  height: 24px;
-  width: 24px;
+  height: 34px;
+  width: 34px;
   display: inline-block;
   cursor: pointer;
   position: relative;
@@ -9090,6 +9095,8 @@ button.module-conversation-details__action-button {
     margin-right: auto; }
   .module-message--outgoing {
     margin-left: auto; }
+  .module-message--outgoing--notification {
+    margin-left: none; }
   .module-message__buttons__download {
     display: inline-block; }
   .module-message__buttons__reply {

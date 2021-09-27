@@ -39,7 +39,27 @@ function resize_message(message_div){
 function adjust_position(message_div){
     lowest_message = find_prev_message(message_div)
     lowest_message_loc = parseInt(lowest_message.style.top, 10)
-    message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) ) + "px"
+
+    curr_message = message_div
+    let current_class = curr_message.children[0].className
+    let previous_class = lowest_message.children[0].className
+
+    // console.log(current_class + " -- " + previous_class)
+
+    if (current_class == previous_class && current_class != "module-inline-notification-wrapper") {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 7) + "px"
+    }
+    else if (current_class == previous_class && current_class == "module-inline-notification-wrapper") {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 20) + "px"
+    }
+    else {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10)) + "px"
+    }
+    
+    
+
+
+
 
 }
 
@@ -50,9 +70,7 @@ function adjust_position_all_messages(){
             adjust_position(message)
         } catch(e){}
     }
-
     resize_message_container()
-
 }
 
 
@@ -105,8 +123,16 @@ function find_next_message(message_div){
     return 0
 }
 
-function delete_message(message_id){
-    document.getElementById(message_id).remove()
+function delete_message(message){
+    try {
+        // this is a message
+        document.getElementById(message.id).remove()
+    }
+    catch (e) {
+        // this is a system message
+        document.getElementById(message.parentElement.parentElement.id).remove()
+    }
+    
 }
 
 
@@ -205,6 +231,7 @@ function resize_listener(event){
         }
     }
     resize_message_container()
+    adjust_position_all_messages()
 }
 
 var observer = ""
@@ -321,7 +348,7 @@ function deleteButtonListener(event){
         }
     }
 
-    delete_message(message_to_del.id)
+    delete_message(message_to_del)
     adjust_position_all_messages()
 }
 
@@ -337,7 +364,6 @@ $(function(){
 
 
     text_box.addEventListener('keydown', (event) => {
-
         if (event.which == 13 || event.keyCode == 13){
             add_message(text_box.innerText, text_box)
         }
@@ -352,7 +378,7 @@ $(function(){
 
     text_box.addEventListener('focusout', (event) => {
         if(text_box.innerHTML == "" || text_box.innerHTML == "<br>"){
-            text_box.setAttribute("data-placeholder", "Send a message")
+            text_box.setAttribute("data-placeholder", "New Message")
             icon.setAttribute("style", "display:")
         }
     });
