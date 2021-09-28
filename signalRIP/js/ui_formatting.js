@@ -46,9 +46,15 @@ function adjust_position(message_div){
 
     // console.log(current_class + " -- " + previous_class)
 
+    // message to message
     if (current_class == previous_class && current_class != "module-inline-notification-wrapper") {
         message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 7) + "px"
     }
+    // message to notification
+    else if (current_class == 'module-inline-notification-wrapper' && previous_class.includes('module-message module-message') ) {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px"
+    }
+    // notification to notification
     else if (current_class == previous_class && current_class == "module-inline-notification-wrapper") {
         message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 20) + "px"
     }

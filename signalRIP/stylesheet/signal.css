@@ -1975,10 +1975,19 @@ img.emoji.jumbo {
   font-style: italic; }
 
 .module-message__metadata {
+/*  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translate(70%);
+  float: right;
+  padding-right: 6em;
+  margin-top: 3px; }*/
+
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 3px; }
+
   .module-message__metadata--outgoing {
     justify-content: flex-end; }
 
@@ -3288,8 +3297,8 @@ img.emoji.jumbo {
 
 .module-in-contacts-icon__icon {
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   margin-bottom: 2px;
   vertical-align: middle;
   -webkit-mask: url("../images/icons/v2/profile-circle-outline-24.svg") no-repeat center;
@@ -4022,7 +4031,7 @@ button.module-conversation-details__action-button {
 
 .module-main-header {
   -webkit-app-region: var(--draggable-app-region);
-  height: calc(52px + var(--title-bar-drag-area-height));
+  height: calc(52px + var(--title-bar-drag-area-height));     
   width: 100%;
   padding-left: 16px;
   padding-right: 16px;
@@ -10677,8 +10686,8 @@ button.module-conversation-details__action-button {
       .dark-theme .module-Avatar--A130--icon {
         background-color: #067906; }
   .module-Avatar--A140 {
-    background-color: #eae0fd;
-    color: #661aff; }
+    background-color: #cee5cd; /*#eae0fd;*/
+    color: #087908; } /*#661aff*/
     .module-Avatar--A140--icon {
       background-color: #661aff; }
       .dark-theme .module-Avatar--A140--icon {
@@ -12067,8 +12076,8 @@ button.module-conversation-details__action-button {
           margin-right: 12px; }
           .module-ConversationHeader__header__info__subtitle__expiration::before {
             content: '';
-            width: 13px;
-            height: 13px;
+            width: 18px;
+            height: 18px;
             display: block;
             margin-right: 4px;
             -webkit-mask: url("../images/icons/v2/timer-outline-24.svg") no-repeat center;
@@ -14965,7 +14974,7 @@ button.module-conversation-details__action-button {
 #provider {
   display:inline-block;
   font-family: sfpro;
-  font-size: 14px;
+  font-size: 16px;
   position: relative;
   top: 1.2em;
   left: .4em;
