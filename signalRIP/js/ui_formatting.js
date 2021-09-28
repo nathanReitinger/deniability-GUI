@@ -212,6 +212,7 @@ function add_message(text_to_add, text_box){
 
     resize_message(message_div)
     resize_message_container()
+    adjust_position_all_messages()
 
     adjust_position_all_messages()
     message_div.scrollIntoView();
@@ -396,7 +397,6 @@ $(function(){
     for(delete_b of delete_btns){
         delete_b.addEventListener('click', deleteButtonListener);
     }
-
 
 
 
