@@ -388,7 +388,7 @@ $(function(){
     text_box.addEventListener('focusout', (event) => {
         if(text_box.innerHTML == "" || text_box.innerHTML == "<br>"){
             text_box.setAttribute("data-placeholder", "New Message")
-            icon.setAttribute("style", "display:")
+            icon.setAttribute("style", "margin-right:7em; display:")
         }
     });
 

@@ -147,7 +147,6 @@ button.grey {
 
 a {
   color: #2c6bed; }
-
 .file-input {
   position: relative; }
   .file-input .choose-file {
@@ -158,7 +157,6 @@ a {
     padding: 0;
     /*opacity: 0.5;*/
     border: none;
-    margin-top: .5em;
     background: transparent;
     outline: none; }
     .file-input .paperclip:focus, .file-input .paperclip:hover {
@@ -7104,7 +7102,7 @@ button.module-conversation-details__action-button {
 .module-sticker-button__button {
   border: 0;
   background: none;
-  margin-top: -1.6em;
+  /*margin-top: -1.6em;*/
   float: right;
   width: 32px;
   /*height: 32px;*/
@@ -11993,7 +11991,7 @@ button.module-conversation-details__action-button {
     border: none;
     opacity: 0;
     transition: margin-left 250ms ease-out, opacity 250ms ease-out;
-    -webkit-mask: url("../images/icons/v2/chevron-left-24.svg") no-repeat center;
+    -webkit-mask: url("../images/icons/v2/chevron-left-32.svg") no-repeat center;
     -webkit-mask-size: 100%;
     background-color: #1b1b1b; }
     .module-ConversationHeader__back-icon:disabled {
