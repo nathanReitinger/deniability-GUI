@@ -147,7 +147,6 @@ button.grey {
 
 a {
   color: #2c6bed; }
-
 .file-input {
   position: relative; }
   .file-input .choose-file {
@@ -158,7 +157,6 @@ a {
     padding: 0;
     /*opacity: 0.5;*/
     border: none;
-    margin-top: .5em;
     background: transparent;
     outline: none; }
     .file-input .paperclip:focus, .file-input .paperclip:hover {
@@ -1226,6 +1224,11 @@ img.emoji.jumbo {
   padding-right: 8px;
   flex-direction: row-reverse; }
 
+.module-message__buttons--outgoing--notification {
+  left: 97%;
+  line-height: 1;
+  flex-direction: row-reverse; }
+
 .module-message__buttons__download {
   height: 24px;
   width: 24px;
@@ -1302,8 +1305,8 @@ img.emoji.jumbo {
   margin-right: 12px; }
 
 .module-message__buttons__menu {
-  height: 24px;
-  width: 24px;
+  height: 34px;
+  width: 34px;
   display: inline-block;
   cursor: pointer;
   position: relative;
@@ -1970,10 +1973,19 @@ img.emoji.jumbo {
   font-style: italic; }
 
 .module-message__metadata {
+/*  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translate(70%);
+  float: right;
+  padding-right: 6em;
+  margin-top: 3px; }*/
+
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 3px; }
+
   .module-message__metadata--outgoing {
     justify-content: flex-end; }
 
@@ -3283,8 +3295,8 @@ img.emoji.jumbo {
 
 .module-in-contacts-icon__icon {
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   margin-bottom: 2px;
   vertical-align: middle;
   -webkit-mask: url("../images/icons/v2/profile-circle-outline-24.svg") no-repeat center;
@@ -4017,7 +4029,7 @@ button.module-conversation-details__action-button {
 
 .module-main-header {
   -webkit-app-region: var(--draggable-app-region);
-  height: calc(52px + var(--title-bar-drag-area-height));
+  height: calc(52px + var(--title-bar-drag-area-height));     
   width: 100%;
   padding-left: 16px;
   padding-right: 16px;
@@ -7090,7 +7102,7 @@ button.module-conversation-details__action-button {
 .module-sticker-button__button {
   border: 0;
   background: none;
-  margin-top: -1.6em;
+  /*margin-top: -1.6em;*/
   float: right;
   width: 32px;
   /*height: 32px;*/
@@ -9090,6 +9102,8 @@ button.module-conversation-details__action-button {
     margin-right: auto; }
   .module-message--outgoing {
     margin-left: auto; }
+  .module-message--outgoing--notification {
+    margin-left: none; }
   .module-message__buttons__download {
     display: inline-block; }
   .module-message__buttons__reply {
@@ -10670,8 +10684,8 @@ button.module-conversation-details__action-button {
       .dark-theme .module-Avatar--A130--icon {
         background-color: #067906; }
   .module-Avatar--A140 {
-    background-color: #eae0fd;
-    color: #661aff; }
+    background-color: #cee5cd; /*#eae0fd;*/
+    color: #087908; } /*#661aff*/
     .module-Avatar--A140--icon {
       background-color: #661aff; }
       .dark-theme .module-Avatar--A140--icon {
@@ -11977,7 +11991,7 @@ button.module-conversation-details__action-button {
     border: none;
     opacity: 0;
     transition: margin-left 250ms ease-out, opacity 250ms ease-out;
-    -webkit-mask: url("../images/icons/v2/chevron-left-24.svg") no-repeat center;
+    -webkit-mask: url("../images/icons/v2/chevron-left-32.svg") no-repeat center;
     -webkit-mask-size: 100%;
     background-color: #1b1b1b; }
     .module-ConversationHeader__back-icon:disabled {
@@ -12060,8 +12074,8 @@ button.module-conversation-details__action-button {
           margin-right: 12px; }
           .module-ConversationHeader__header__info__subtitle__expiration::before {
             content: '';
-            width: 13px;
-            height: 13px;
+            width: 18px;
+            height: 18px;
             display: block;
             margin-right: 4px;
             -webkit-mask: url("../images/icons/v2/timer-outline-24.svg") no-repeat center;
@@ -14958,7 +14972,7 @@ button.module-conversation-details__action-button {
 #provider {
   display:inline-block;
   font-family: sfpro;
-  font-size: 14px;
+  font-size: 16px;
   position: relative;
   top: 1.2em;
   left: .4em;
