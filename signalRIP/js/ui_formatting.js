@@ -161,6 +161,10 @@ function add_message(text_to_add, text_box){
 
     message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>39m</span></span><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></div></div></div></div>`
     message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable>Yes I'm&nbsp;here</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Mon, Sep 20, 2021 10:49 AM"><span contenteditable>1m</span></span><div class="module-expire-timer module-expire-timer--60 module-expire-timer--incoming"></div></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--incoming"></div><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
+    message_inners_notification_missed_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage SystemMessage--error"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable="">Missed audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:31 PM"><span contenteditable="">37m</span></span></div></div></div>`
+    message_inners_notification_outgoing_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-outgoing"><span contenteditable="">You called Arden · </span><span class="module-timestamp module-timestamp--incoming" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span></div></div></div>`
+    message_inners_notification_incoming_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-incoming"><span contenteditable="">Arden called you · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span></div></div></div>`
+    message_inners_notification_unanswered_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable="">Unanswered audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 3:34 PM"><span contenteditable="">7h</span></span></div></div></div>`
 
     all_messages = document.getElementsByClassName("module-timeline__message-container")
 
@@ -189,7 +193,8 @@ function add_message(text_to_add, text_box){
             editable_div_current.setAttribute("style", "border-top-left-radius: 5px")
         }
     // if outgoing message, use HTML properties from outgoing
-    } else {
+    } 
+    if ($("#popupSelect").val() == 'Outgoing') {
         message_div.innerHTML = message_inners_outgoing
         if (prev_message.innerHTML.includes(message_identifier_outgoing)) {
             console.log(prev_message.getElementsByClassName(message_identifier_outgoing)[0])
@@ -199,6 +204,19 @@ function add_message(text_to_add, text_box){
             editable_div_current.setAttribute("style", "border-top-right-radius: 5px")
         }
     }
+    if ($("#popupSelect").val() == 'Missed_Audio_Call') {
+        message_div.innerHTML = message_inners_notification_missed_audio_call
+    }
+    if ($("#popupSelect").val() == 'Outgoing_Audio_Call') {
+        message_div.innerHTML = message_inners_notification_outgoing_audio_call
+    }
+    if ($("#popupSelect").val() == 'Incoming_Audio_Call') {
+        message_div.innerHTML = message_inners_notification_incoming_audio_call
+    }
+    if ($("#popupSelect").val() == 'Unanswered_Audio_Call') {
+        message_div.innerHTML = message_inners_notification_unanswered_audio_call
+    }
+
 
     text_displayed = message_div.getElementsByTagName("span")[0]
     console.log(text_displayed)
@@ -212,7 +230,8 @@ function add_message(text_to_add, text_box){
 
     if ($("#popupSelect").val() == 'Incoming') {
         message_div.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--incoming")[0].addEventListener('click', deleteButtonListener)
-    } else {
+    }
+    if ($("#popupSelect").val() == 'Outgoing') {
         message_div.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--outgoing")[0].addEventListener('click', deleteButtonListener)
     }
 
