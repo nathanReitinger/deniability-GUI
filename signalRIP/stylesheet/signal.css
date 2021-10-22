@@ -15006,3 +15006,12 @@ button.module-conversation-details__action-button {
 
 
 
+.notification_trash{
+  opacity: .0;
+  filter: alpha(opacity=.0);
+  background: url(../images/icons/v2/trash-outline-24.svg) no-repeat center;
+}
+.notification_trash:hover{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
