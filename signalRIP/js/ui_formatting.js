@@ -11,6 +11,8 @@ function resize_message(message_div){
         lowest_message_loc = 256-57
         last_message_data_row = "0"
         lowest_message_height = 57
+
+        console.log("exceptions asdjf;asjdfasf;jsadfk;sdj")
     }
     
 
@@ -22,7 +24,7 @@ function resize_message(message_div){
         message_div_height = message_div.getElementsByClassName("module-message__container-outer")[0].clientHeight + message_height_offset    
 
     } catch (e){
-        message_height_offset = 41
+        message_height_offset = 30 // this was 41, I think it looks better with 30.
         message_div_height = message_div.getElementsByClassName("module-inline-notification-wrapper")[0].clientHeight + message_height_offset
       
     }
@@ -160,11 +162,18 @@ function add_message(text_to_add, text_box){
     outer_container = document.getElementById("where_all_the_messages_go")
 
     message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>39m</span></span><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></div></div></div></div>`
-    message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable>Yes I'm&nbsp;here</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Mon, Sep 20, 2021 10:49 AM"><span contenteditable>1m</span></span><div class="module-expire-timer module-expire-timer--60 module-expire-timer--incoming"></div></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div role="button" class="module-message__buttons__react" aria-label="React to Message"></div><div role="button" aria-label="Reply to Message" class="module-message__buttons__reply module-message__buttons__download--incoming"></div><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
-    message_inners_notification_missed_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage SystemMessage--error"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable="">Missed audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:31 PM"><span contenteditable="">37m</span></span></div></div></div>`
-    message_inners_notification_outgoing_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-outgoing"><span contenteditable="">You called Arden · </span><span class="module-timestamp module-timestamp--incoming" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span></div></div></div>`
-    message_inners_notification_incoming_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-incoming"><span contenteditable="">Arden called you · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span></div></div></div>`
-    message_inners_notification_unanswered_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable="">Unanswered audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 3:34 PM"><span contenteditable="">7h</span></span></div></div></div>`
+    
+    
+    message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming" style="border-radius: 16px 16px 16px 5px"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable="">Everyone likes&nbsp;pizza</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Thu, Sep 16, 2021 10:26 PM"><span contenteditable>41m</span></span><div class="module-expire-timer module-expire-timer--20 module-expire-timer--incoming"></div></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
+
+
+    message_inners_notification_missed_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage SystemMessage--error"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable>Missed audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:31 PM"><span contenteditable>37m</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span> </div></div></div>`
+    message_inners_notification_outgoing_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-outgoing"><span contenteditable="">You called Arden · </span><span class="module-timestamp module-timestamp--incoming" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    message_inners_notification_incoming_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-incoming"><span contenteditable="">Arden called you · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    message_inners_notification_unanswered_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable="">Unanswered audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 3:34 PM"><span contenteditable="">7h</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    
+    message_inners_notification_disappearing_message = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-timer"><span contenteditable>You set the disappearing message time to 5 minutes.</span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span> </div></div></div>`
+
 
     all_messages = document.getElementsByClassName("module-timeline__message-container")
 
@@ -176,7 +185,8 @@ function add_message(text_to_add, text_box){
     //message_div.setAttribute("contenteditable", true)
     message_div.setAttribute("class", "module-timeline__message-container" )
     message_div.setAttribute("role", "row" )
-    message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
+
+
 
     // if prev message is same sender, then edit border property
     let message_identifier_incoming = "module-message__container module-message__container--incoming"
@@ -185,6 +195,7 @@ function add_message(text_to_add, text_box){
 
     // if incoming message, use HTML properties from incoming
     if ($("#popupSelect").val() == 'Incoming') {
+        message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
         message_div.innerHTML = message_inners_incoming
         if (prev_message.innerHTML.includes(message_identifier_incoming)) {
             var editable_div_previous = prev_message.getElementsByClassName(message_identifier_incoming)[0]
@@ -195,6 +206,7 @@ function add_message(text_to_add, text_box){
     // if outgoing message, use HTML properties from outgoing
     } 
     if ($("#popupSelect").val() == 'Outgoing') {
+        message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
         message_div.innerHTML = message_inners_outgoing
         if (prev_message.innerHTML.includes(message_identifier_outgoing)) {
             console.log(prev_message.getElementsByClassName(message_identifier_outgoing)[0])
@@ -205,16 +217,25 @@ function add_message(text_to_add, text_box){
         }
     }
     if ($("#popupSelect").val() == 'Missed_Audio_Call') {
+        message_div.setAttribute("style", "height: 57px; left: 0px; position: absolute; top: 2028px; width: 446px;")
         message_div.innerHTML = message_inners_notification_missed_audio_call
     }
     if ($("#popupSelect").val() == 'Outgoing_Audio_Call') {
+        message_div.setAttribute("style", "height: 57px; left: 0px; position: absolute; top: 2028px; width: 446px;")
         message_div.innerHTML = message_inners_notification_outgoing_audio_call
     }
     if ($("#popupSelect").val() == 'Incoming_Audio_Call') {
         message_div.innerHTML = message_inners_notification_incoming_audio_call
+        message_div.setAttribute("style", "height: 57px; left: 0px; position: absolute; top: 2028px; width: 446px;")
     }
     if ($("#popupSelect").val() == 'Unanswered_Audio_Call') {
         message_div.innerHTML = message_inners_notification_unanswered_audio_call
+        message_div.setAttribute("style", "height: 57px; left: 0px; position: absolute; top: 2028px; width: 446px;")
+    }
+
+    if ($("#popupSelect").val() == 'Disappearing_Message') {
+        message_div.innerHTML = message_inners_notification_disappearing_message
+        message_div.setAttribute("style", "height: 57px; left: 0px; position: absolute; top: 2028px; width: 446px;")
     }
 
 
@@ -234,6 +255,11 @@ function add_message(text_to_add, text_box){
     if ($("#popupSelect").val() == 'Outgoing') {
         message_div.getElementsByClassName("module-message__buttons__menu module-message__buttons__download--outgoing")[0].addEventListener('click', deleteButtonListener)
     }
+
+    if ($("#popupSelect").val() == 'Missed_Audio_Call' || $("#popupSelect").val() == 'Outgoing_Audio_Call' || $("#popupSelect").val() == 'Incoming_Audio_Call'  || $("#popupSelect").val() == 'Unanswered_Audio_Call' || $("#popupSelect").val() == 'Disappearing_Message') {
+        message_div.getElementsByClassName("notification_trash")[0].addEventListener('click', deleteNotfButtonListener);
+    }
+
 
     resize_message(message_div)
     resize_message_container()
@@ -380,6 +406,19 @@ function deleteButtonListener(event){
     adjust_position_all_messages()
 }
 
+
+function deleteNotfButtonListener(event){
+    message_to_del = event.currentTarget.parentElement.parentElement.parentElement
+    console.log(message_to_del.id)
+
+    delete_message(message_to_del)
+    adjust_position_all_messages()
+}
+
+
+
+
+
 $(function(){
 
     text_box = document.getElementsByClassName("ql-editor ql-blank ql-editor--loaded")[0]
@@ -434,8 +473,11 @@ $(function(){
     }
 
 
-
-
+    notf_delete_btns = document.getElementsByClassName("notification_trash");
+    for(delete_b of notf_delete_btns){
+        console.log(delete_b);
+        delete_b.addEventListener('click', deleteNotfButtonListener);
+    }
 
 });
 
