@@ -54,7 +54,7 @@ function adjust_position(message_div){
     }
     // message to notification
     else if (current_class == 'module-inline-notification-wrapper' && previous_class.includes('module-message module-message') ) {
-        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px"
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px" // this use to be:   height, 10) + 20) + "px" 
     }
     // notification to notification
     else if (current_class == previous_class && current_class == "module-inline-notification-wrapper") {
