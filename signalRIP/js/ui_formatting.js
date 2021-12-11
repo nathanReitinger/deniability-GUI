@@ -391,18 +391,28 @@ $(function(){
     });
 
 
+
+
     text_box.addEventListener('keydown', (event) => {
-        if (event.which == 13 || event.keyCode == 13){
-            add_message(text_box.innerText, text_box)
+        if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
+            event.preventDefault();
         }
     });
 
-    text_box.addEventListener('keyup', (event) => {
 
-        if (event.which == 13 || event.keyCode == 13){
+    text_box.addEventListener('keyup', (event) => {
+        if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
+            add_message(text_box.innerText, text_box)
             text_box.innerHTML = ""
         }
     });
+
+    //text_box.addEventListener('keyup', (event) => {
+
+    //    if (event.which == 13 || event.keyCode == 13){
+    //        text_box.innerHTML = ""
+    //    }
+    //});
 
     text_box.addEventListener('focusout', (event) => {
         if(text_box.innerHTML == "" || text_box.innerHTML == "<br>"){
