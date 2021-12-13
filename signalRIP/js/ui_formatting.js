@@ -480,18 +480,7 @@ function deleteNotfButtonListener(event){
 
 
 function downloadScreenShot(){
-
-    let div =document.getElementById('the_conversataion');
-  
-    html2canvas(div).then(
-        function (canvas) {
-            console.log(canvas)
-
-            var link = document.createElement('a');
-            link.download = 'filename.png';
-            link.href = canvas.toDataURL()
-            link.click();
-        })
+    alert("The screen shot feature is currently disabled.");
 }
 
 
