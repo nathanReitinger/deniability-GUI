@@ -212,7 +212,7 @@ function generate_id(){
 
 
 
-function add_message(text_to_add, secondary_text="41m"){
+function add_message(text_to_add, secondary_text="41m", do_scroll=false){
     outer_container = document.getElementById("where_all_the_messages_go")
 
     message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>39m</span></span><span contenteditable><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div></span><span contenteditable><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></span></div></div></div></div>`
@@ -328,7 +328,10 @@ function add_message(text_to_add, secondary_text="41m"){
     resize_message(message_div)
     resize_message_container()
     adjust_position_all_messages()
-    message_div.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    if (do_scroll) {
+        message_div.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    }
+    
 
 
 }
@@ -529,8 +532,6 @@ $(function(){
     });
 
 
-
-
     text_box.addEventListener('keydown', (event) => {
         if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
             event.preventDefault();
@@ -540,7 +541,7 @@ $(function(){
 
     text_box.addEventListener('keyup', (event) => {
         if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
-            add_message(text_box.innerText)
+            add_message(text_box.innerText, do_scroll=true)
             text_box.innerHTML = ""
         }
     });
