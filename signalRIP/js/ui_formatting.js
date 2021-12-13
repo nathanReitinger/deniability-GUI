@@ -52,32 +52,58 @@ function adjust_position_incoming_to_ougoing(message_div) {
 
 function adjust_position(message_div){
     lowest_message = find_prev_message(message_div)
-    lowest_message_loc = parseInt(lowest_message.style.top, 10)
+    try {
+        lowest_message_loc = parseInt(lowest_message.style.top, 10)
+    } catch (TypeError) {
+        lowest_message_loc = 64
+        lowest_message_style_height = 180
+    }
 
     curr_message = message_div
     let current_class = curr_message.children[0].className
-    let previous_class = lowest_message.children[0].className
+    let previous_class = 0 
+
+    try {
+        previous_class = lowest_message.children[0].className
+    } catch (error) {
+        previous_class = "module-inline-notification-wrapper"
+    }
+
+
+
 
     // console.log(current_class + " -- " + previous_class)
+
+    var adjustment = 0
 
     // message to message
     if (current_class == previous_class && current_class != "module-inline-notification-wrapper") {
         console.log('message to message')
-        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 7) + "px"
+        //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 7) + "px"
+        adjustment = -7
     }
     // message to notification
     else if (current_class == 'module-inline-notification-wrapper' && previous_class.includes('module-message module-message') ) {
         console.log('message to notification')
-        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px" // this use to be:   height, 10) + 20) + "px" 
+        //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px" // this use to be:   height, 10) + 20) + "px" 
+        adjustment = 20
     }
     // notification to notification
     else if (current_class == previous_class && current_class == "module-inline-notification-wrapper") {
         console.log('notification to notification')
-        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 20) + "px"
+        adjustment = -20
     }
     else {
         console.log('OTHER')
-        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10)) + "px"
+        //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10)) + "px"
+        adjustment = 10
+    }
+
+
+    try {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + adjustment) + "px"
+    } catch (error) {
+        message_div.style.top = (lowest_message_loc + parseInt(lowest_message_style_height, 10) + adjustment) + "px"
     }
     
 
