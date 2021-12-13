@@ -328,7 +328,7 @@ function add_message(text_to_add, secondary_text="41m"){
     resize_message(message_div)
     resize_message_container()
     adjust_position_all_messages()
-    message_div.scrollIntoView(false);
+    message_div.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
 
 }
