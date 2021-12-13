@@ -480,7 +480,7 @@ function deleteNotfButtonListener(event){
 
 
 function downloadScreenShot(){
-    alert("This feature is currently disabled for the study");
+    alert("This feature is currently disabled for the study.");
 }
 
 
