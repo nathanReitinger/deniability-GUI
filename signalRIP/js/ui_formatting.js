@@ -212,19 +212,21 @@ function generate_id(){
 
 
 
-function add_message(text_to_add, text_box){
+function add_message(text_to_add, secondary_text="41m"){
     outer_container = document.getElementById("where_all_the_messages_go")
 
-    message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>39m</span></span><span contenteditable><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div></span><span contenteditable><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></span></div></div></div></div>`
+    message_inners_outgoing = `<div class="module-message module-message--outgoing" tabindex="0" role="button"><div class="module-message__buttons module-message__buttons--outgoing"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--outgoing"></div></div></div><div class="module-message__container-outer"><div class="module-message__container module-message__container--outgoing module-message__container--outgoing-ultramarine"><div dir="auto" class="module-message__text module-message__text--outgoing"><span contenteditable="">That sure sounds like a big&nbsp;plan</span></div><div class="module-message__metadata module-message__metadata--outgoing"><span class="module-message__metadata__date module-message__metadata__date--outgoing" title="Thu, Sep 16, 2021 10:28 PM"><span contenteditable>`+secondary_text+`</span></span><span contenteditable><div class="module-expire-timer module-expire-timer--20 module-expire-timer--outgoing"></div></span><span contenteditable><div class="module-message__metadata__status-icon module-message__metadata__status-icon--read"></div></span></div></div></div></div>`
     
     
-    message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming" style="border-radius: 16px 16px 16px 5px"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable="">Everyone likes&nbsp;pizza</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Thu, Sep 16, 2021 10:26 PM"><span contenteditable>41m</span></span><span contenteditable><div class="module-expire-timer module-expire-timer--20 module-expire-timer--incoming"></div></span></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
+    message_inners_incoming = `<div class="module-message module-message--incoming" tabindex="0" role="button"><div class="module-message__container-outer"><div class="module-message__container module-message__container--incoming" style="border-radius: 16px 16px 16px 5px"><div dir="auto" class="module-message__text module-message__text--incoming"><span contenteditable="">Everyone likes&nbsp;pizza</span></div><div class="module-message__metadata module-message__metadata--incoming"><span class="module-message__metadata__date module-message__metadata__date--incoming" title="Thu, Sep 16, 2021 10:26 PM"><span contenteditable>`+secondary_text+`</span></span><span contenteditable><div class="module-expire-timer module-expire-timer--20 module-expire-timer--incoming"></div></span></div></div></div><div class="module-message__buttons module-message__buttons--incoming"><div class="react-contextmenu-wrapper"><div role="button" aria-label="More actions" class="module-message__buttons__menu module-message__buttons__download--incoming"></div></div></div></div>`
 
 
-    message_inners_notification_missed_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage SystemMessage--error"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable></span><span contenteditable>Missed audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:31 PM"><span contenteditable>37m</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span> </div></div></div>`
-    message_inners_notification_outgoing_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-outgoing"><span contenteditable=""></span><span contenteditable>You called Arden · </span><span class="module-timestamp module-timestamp--incoming" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
-    message_inners_notification_incoming_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-incoming"><span contenteditable=""></span><span contenteditable>Arden called you ·  </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">Sep 27 9:58 PM</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
-    message_inners_notification_unanswered_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable=""></span><span contenteditable>Unanswered audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 3:34 PM"><span contenteditable="">7h</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    message_inners_notification_missed_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage SystemMessage--error"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable></span><span contenteditable> · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:31 PM"><span contenteditable>`+secondary_text+`</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span> </div></div></div>`
+
+
+    message_inners_notification_outgoing_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-outgoing"><span contenteditable=""></span><span contenteditable>You called Arden · </span><span class="module-timestamp module-timestamp--incoming" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">`+secondary_text+`</span></span> <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    message_inners_notification_incoming_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-incoming"><span contenteditable=""></span><span contenteditable>Arden called you ·  </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 10:20 PM"><span contenteditable="">`+secondary_text+`</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
+    message_inners_notification_unanswered_audio_call = `<div class="module-inline-notification-wrapper" tabindex="0"><div class="SystemMessage"><div class="SystemMessage__contents SystemMessage__contents--icon-audio-missed"><span contenteditable=""></span><span contenteditable>Unanswered audio call · </span><span class="module-timestamp module-timestamp--outgoing" title="Thu, Sep 16, 2021 3:34 PM"><span contenteditable="">`+secondary_text+`</span></span>  <span ><img class="notification_trash" src="../images/icons/v2/trash-outline-24.svg"></span>  </div></div></div>`
     
 
     // message_inners_notification_disappearing_message = `
@@ -480,6 +482,37 @@ function deleteNotfButtonListener(event){
 }
 
 
+function addConversation(){
+    $("#popupSelect").val("Incoming");
+    add_message("As long as you keep paying like you did last time I'll keep signing whatever you want", "21m");
+
+    $("#popupSelect").val("Missed_Audio_Call");
+    add_message("Missed Call", "Sep 27 10:34 PM");
+
+    $("#popupSelect").val("Outgoing");
+    add_message("Do you like pizza", "41m");
+
+    $("#popupSelect").val("Incoming");
+    add_message("Everyone likes pizza", "41m");
+    add_message("This is me Arden Fowler", "41m");
+
+    $("#popupSelect").val("Outgoing");
+    add_message("Hi", "41m");
+
+    $("#popupSelect").val("Incoming");
+    add_message("Once I win the reelection I'm taking a trip to the moon on a spaceship", "40m");
+    add_message("I plan to vacation on the moon for one maybe two months and then return 🚀", "40m");
+
+    $("#popupSelect").val("Outgoing");
+    add_message("That sure sounds like a big plan", "39m");
+    add_message("What will you do up there", "39m");
+
+    $("#popupSelect").val("Incoming");
+    add_message("Space walk", "39m");
+
+}
+
+
 
 
 
@@ -505,7 +538,7 @@ $(function(){
 
     text_box.addEventListener('keyup', (event) => {
         if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
-            add_message(text_box.innerText, text_box)
+            add_message(text_box.innerText)
             text_box.innerHTML = ""
         }
     });
@@ -543,6 +576,8 @@ $(function(){
         delete_b.addEventListener('click', deleteNotfButtonListener);
     }
 
+
+    addConversation()
 
 });
 
