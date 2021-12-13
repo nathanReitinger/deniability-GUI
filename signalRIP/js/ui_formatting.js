@@ -328,7 +328,9 @@ function add_message(text_to_add, secondary_text="41m", do_scroll=false){
     resize_message(message_div)
     resize_message_container()
     adjust_position_all_messages()
+    console.log("this is do_scroll", do_scroll)
     if (do_scroll) {
+        console.log("scroll engaged")
         message_div.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     }
     
@@ -541,7 +543,7 @@ $(function(){
 
     text_box.addEventListener('keyup', (event) => {
         if ((event.which == 13 || event.keyCode == 13) && !event.shiftKey){
-            add_message(text_box.innerText, do_scroll=true)
+            add_message(text_box.innerText, secondary_text="41m", do_scroll=true)
             text_box.innerHTML = ""
         }
     });
