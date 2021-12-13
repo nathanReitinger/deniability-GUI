@@ -479,6 +479,22 @@ function deleteNotfButtonListener(event){
 }
 
 
+function downloadScreenShot(){
+
+    let div =document.getElementById('the_conversataion');
+  
+    html2canvas(div).then(
+        function (canvas) {
+            console.log(canvas)
+
+            var link = document.createElement('a');
+            link.download = 'filename.png';
+            link.href = canvas.toDataURL()
+            link.click();
+        })
+}
+
+
 function addConversation(){
     $("#popupSelect").val("Incoming");
     add_message("As long as you keep paying like you did last time I'll keep signing whatever you want", "21m");

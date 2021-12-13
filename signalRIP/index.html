@@ -12,6 +12,7 @@
     <link href="stylesheet/signal.css" rel="stylesheet" type="text/css">
 
 
+
     <!--    When making changes to these templates, be sure to update test/index.html as well  -->
     <script type="text/x-tmpl-mustache" id="app-loading-screen">
         <div class='module-title-bar-drag-area'></div>
@@ -171,6 +172,7 @@
     </script>
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> 
     <script type="text/javascript" src="js/ui_formatting.js"></script>
+    ,<script type="text/javascript" src="js/html2canvas.min.js"></script>
 
 <!--     <script type="text/javascript" src="js/components.js"></script>
     <script type="text/javascript" src="ts/set_os_class.js"></script>
@@ -238,7 +240,7 @@
 
 <body>
 
-    <div style="width: 446px; height: 850px; margin:0 auto;">  <!-- 850px or 700px for iphone look -->
+    <div id="the_conversataion" style="width: 446px; height: 850px; margin:0 auto;">  <!-- 850px or 700px for iphone look -->
 
             <p id="signal"><img src="../../images/icons/bars2.jpg" width="20"></p>
             <p id="provider"><span contenteditable>T-Mobile</span></p>
@@ -484,6 +486,8 @@
                 <option value="Unanswered_Audio_Call">Unanswered Audio Call</option>
                 <!-- <option value="Disappearing_Message">Disappearing Message</option> -->
             </select>
+
+            <button onclick="downloadScreenShot()">Download a ScreenShot</button>
 
             <br/><br/>
 
