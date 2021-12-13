@@ -484,7 +484,7 @@ function addConversation(){
     add_message("As long as you keep paying like you did last time I'll keep signing whatever you want", "21m");
 
     $("#popupSelect").val("Missed_Audio_Call");
-    add_message("Missed Call", "Sep 27 10:34 PM");
+    add_message("", "Sep 27 10:34 PM");
 
     $("#popupSelect").val("Outgoing");
     add_message("Do you like pizza", "41m");
