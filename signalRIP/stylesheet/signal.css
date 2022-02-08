@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: sfpro;
-    src: url("font/sf-pro.otf"); }
+    src: url("fonts/sf-pro.otf"); }
 
 @keyframes search-results-loading-pulsating-background-animation {
   0% {
