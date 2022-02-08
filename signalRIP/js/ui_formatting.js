@@ -12,7 +12,7 @@ function resize_message(message_div){
         last_message_data_row = "0"
         lowest_message_height = 57
 
-        console.log("exceptions asdjf;asjdfasf;jsadfk;sdj")
+        // console.log("exceptions")
     }
     
 
@@ -42,10 +42,11 @@ function adjust_position_incoming_to_ougoing(message_div) {
     let current_class = curr_message.children[0].className
     let previous_class = prev.children[0].className
 
-    console.log("hamburger", current_class, previous_class)
+    // console.log(current_class, previous_class)
 
     if (current_class == "module-message module-message--outgoing"  && previous_class == "module-message module-message--incoming" || current_class == "module-message module-message--incoming" && previous_class == "module-message module-message--outgoing") {
-        console.log("dissimilar classmessage to message")
+        // console.log("dissimilar classmessage to message")
+
         
     }
 }
@@ -78,23 +79,23 @@ function adjust_position(message_div){
 
     // message to message
     if (current_class == previous_class && current_class != "module-inline-notification-wrapper") {
-        console.log('message to message')
+        // console.log('message to message')
         //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) - 7) + "px"
         adjustment = -7
     }
     // message to notification
     else if (current_class == 'module-inline-notification-wrapper' && previous_class.includes('module-message module-message') ) {
-        console.log('message to notification')
+        // console.log('message to notification')
         //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10) + 20) + "px" // this use to be:   height, 10) + 20) + "px" 
         adjustment = 20
     }
     // notification to notification
     else if (current_class == previous_class && current_class == "module-inline-notification-wrapper") {
-        console.log('notification to notification')
+        // console.log('notification to notification')
         adjustment = -20
     }
     else {
-        console.log('OTHER')
+        // console.log('OTHER')
         //message_div.style.top = (lowest_message_loc + parseInt(lowest_message.style.height, 10)) + "px"
         adjustment = 10
     }
@@ -117,7 +118,9 @@ function adjust_position_all_messages(){
             // console.log("curr being adjusted", message)
             adjust_position(message)
             // console.log("DONE")
-        } catch(e){ console.log(e) }
+        } catch(e){ 
+            // console.log(e) 
+        }
     }
     resize_message_container()
 }
@@ -273,7 +276,7 @@ function add_message(text_to_add, secondary_text="41m", do_scroll=false){
         message_div.setAttribute("style", "height: 64px; left: 0px; position: absolute; top: 1779px; width: 446px;")
         message_div.innerHTML = message_inners_outgoing
         if (prev_message.innerHTML.includes(message_identifier_outgoing)) {
-            console.log(prev_message.getElementsByClassName(message_identifier_outgoing)[0])
+            // console.log(prev_message.getElementsByClassName(message_identifier_outgoing)[0])
             var editable_div_previous = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
             var editable_div_current = message_div.getElementsByClassName(message_identifier_outgoing)[0]
             editable_div_previous.style.cssText += 'border-bottom-right-radius: 5px';
@@ -304,7 +307,7 @@ function add_message(text_to_add, secondary_text="41m", do_scroll=false){
 
 
     text_displayed = message_div.getElementsByTagName("span")[0]
-    console.log(text_displayed)
+    // console.log(text_displayed)
     text_displayed.innerHTML = text_to_add
 
     outer_container.appendChild(message_div)
@@ -328,9 +331,9 @@ function add_message(text_to_add, secondary_text="41m", do_scroll=false){
     resize_message(message_div)
     resize_message_container()
     adjust_position_all_messages()
-    console.log("this is do_scroll", do_scroll)
+    // console.log("this is do_scroll", do_scroll)
     if (do_scroll) {
-        console.log("scroll engaged")
+        // console.log("scroll engaged")
         message_div.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     }
     
@@ -360,7 +363,7 @@ var observer = ""
 
 function deleteButtonListener(event){
     message_to_del = event.currentTarget.parentElement.parentElement.parentElement.parentElement
-    console.log(message_to_del.id)
+    // console.log(message_to_del.id)
 
 
     //// if no subsequent message, unround bottom right/left corner
@@ -391,13 +394,13 @@ function deleteButtonListener(event){
     if (message_to_del.innerHTML.includes(message_identifier_incoming)) {
 
         if (subsequent_message == 0 && !prev_match_incoming) {
-            console.log("passing, this is solo delete")
+            // console.log("passing, this is solo delete")
         }
         else if (!prev_match_incoming && !subsequent_message.innerHTML.includes(message_identifier_incoming)) {
-            console.log("passing, this is solo delete")
+            // console.log("passing, this is solo delete")
             // check if other user is now chain
             if (prev_match_outgoing && subsequent_message.innerHTML.includes(message_identifier_outgoing)) {
-                console.log("--to edit here")
+                // console.log("--to edit here")
                 var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
                 var editable_div_sub = subsequent_message.getElementsByClassName(message_identifier_outgoing)[0]
                 editable_div_prev.style.cssText += 'border-bottom-right-radius: 5px';
@@ -408,13 +411,13 @@ function deleteButtonListener(event){
             if (prev_match_incoming && curr_match_incoming) {
                 if (subsequent_message == 0) {
                     // unround prev
-                    console.log("unreound prev")
+                    // console.log("unreound prev")
                     var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
                     editable_div_prev.style.cssText += 'border-bottom-left-radius: 16px';
                 } else {
                     if (subsequent_message.innerHTML.includes(message_identifier_incoming) == false) {
                         //unround prev
-                        console.log("unreound prev")
+                        // console.log("unreound prev")
                         var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
                         editable_div_prev.style.cssText += 'border-bottom-left-radius: 16px';
                     }
@@ -423,7 +426,7 @@ function deleteButtonListener(event){
             if (!prev_match_incoming && curr_match_incoming) {
                 if (subsequent_message != 0) {
                     // unround sub
-                    console.log("unreound sub")
+                    // console.log("unreound sub")
                     var editable_div_prev = subsequent_message.getElementsByClassName(message_identifier_incoming)[0]
                     editable_div_prev.style.cssText += 'border-top-left-radius: 16px';
                 }
@@ -432,12 +435,12 @@ function deleteButtonListener(event){
     } else {
 
         if (subsequent_message == 0 && !prev_match_outgoing) {
-            console.log("passing, this is solo delete")
+            // console.log("passing, this is solo delete")
         }
         else if (!prev_match_outgoing && !subsequent_message.innerHTML.includes(message_identifier_outgoing)) {
-            console.log("passing, this is solo delete")
+            // console.log("passing, this is solo delete")
             if (prev_match_incoming && subsequent_message.innerHTML.includes(message_identifier_incoming)) {
-                console.log("--to edit here")
+                // console.log("--to edit here")
                 var editable_div_prev = prev_message.getElementsByClassName(message_identifier_incoming)[0]
                 var editable_div_sub = subsequent_message.getElementsByClassName(message_identifier_incoming)[0]
                 editable_div_prev.style.cssText += 'border-bottom-left-radius: 5px';
@@ -447,13 +450,13 @@ function deleteButtonListener(event){
             if (prev_match_outgoing && curr_match_outgoing) {
                 if (subsequent_message == 0) {
                     // unround prev
-                    console.log("unreound prev")
+                    // console.log("unreound prev")
                     var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
                     editable_div_prev.style.cssText += 'border-bottom-right-radius: 16px';
                 } else {
                     if (subsequent_message.innerHTML.includes(message_identifier_outgoing) == false) {
                         //unround prev
-                        console.log("unreound prev")
+                        // console.log("unreound prev")
                         var editable_div_prev = prev_message.getElementsByClassName(message_identifier_outgoing)[0]
                         editable_div_prev.style.cssText += 'border-bottom-right-radius: 16px';
                     }
@@ -461,7 +464,7 @@ function deleteButtonListener(event){
             }
             if (!prev_match_outgoing && curr_match_outgoing) {
                 if (subsequent_message != 0) {
-                    console.log('unround sub')
+                    // console.log('unround sub')
                     var editable_div_prev = subsequent_message.getElementsByClassName(message_identifier_outgoing)[0]
                     editable_div_prev.style.cssText += 'border-top-right-radius: 16px';
                 }
@@ -476,7 +479,7 @@ function deleteButtonListener(event){
 
 function deleteNotfButtonListener(event){
     message_to_del = event.currentTarget.parentElement.parentElement.parentElement
-    console.log(message_to_del.id)
+    // console.log(message_to_del.id)
 
     delete_message(message_to_del)
     adjust_position_all_messages()
@@ -577,7 +580,7 @@ $(function(){
 
     notf_delete_btns = document.getElementsByClassName("notification_trash");
     for(delete_b of notf_delete_btns){
-        console.log(delete_b);
+        // console.log(delete_b);
         delete_b.addEventListener('click', deleteNotfButtonListener);
     }
 
